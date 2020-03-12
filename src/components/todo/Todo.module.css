@@ -1,0 +1,11 @@
+.Todo {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    width: 500px;
+}
+
+.TodoInput {
+    margin-right: 15px;
+    height: 25px;
+    border: none;
+}
