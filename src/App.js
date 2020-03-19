@@ -18,23 +18,11 @@ class App extends React.Component {
     }
 
 
-    emptyList = () => {
-        const listQuests = this.state.listQuests.length
-
-        if(listQuests === 0) {
-            this.setState({
-                emptyList: "Список пуст"
-            })
-        }
-
-    }
-
     changeItemState = (changeItem) => {
         this.setState({
             changeItem: changeItem
         })
     }
-
 
     changeInputHandler = (e) => {
         let val = e.target.value;
@@ -47,26 +35,27 @@ class App extends React.Component {
 
         let dat = this.state.nameItem
 
-        let listQuests = this.state.listQuests
-
-        let id = (this.state.listQuests.length + 1);
-
-
-        // this.setState(
-        //     prevState => ({ ...prevState, listQuests: [...listQuests, {id: 5, nameQuest: dat, flag: true}] })
-        // )
+        if(dat !== '') {
+            let listQuests = this.state.listQuests
+            let id = (this.state.listQuests.length + 1);
 
 
-        // listQuests = [...listQuests, {id: 5, nameQuest: dat, flag: true}]
-        // this.setState({listQuests: listQuests})
+            // this.setState(
+            //     prevState => ({ ...prevState, listQuests: [...listQuests, {id: 5, nameQuest: dat, flag: true}] })
+            // )
 
 
-        const nItem = [{id: id, nameQuest: dat, flag: true}]
+            // listQuests = [...listQuests, {id: 5, nameQuest: dat, flag: true}]
+            // this.setState({listQuests: listQuests})
 
-        const arr = listQuests.concat(nItem)
-        this.setState({
-            listQuests: arr
-        })
+            const nItem = [{id: id, nameQuest: dat, flag: true}]
+
+            const arr = listQuests.concat(nItem)
+            this.setState({
+                listQuests: arr
+            })
+
+        }
 
     }
 
@@ -86,18 +75,19 @@ class App extends React.Component {
 
     changeItemHandler = (changeItem) => {
         let listQuests = this.state.listQuests; // стейт со списком
+
+
         const changeItemDate = this.state.changeItem // стейт того, на что нужно заменить nameQuest нужного объекта
         let arr = listQuests;
 
         for (let i=0; listQuests.length <= i; i++) {
             if (listQuests.id = changeItem) {
-                for (let i=0; arr.length; i++) {
-                    
-                }
+                this.istQuests.nameQuest = changeItemDate
             }
-
         }
-
+        this.setState({
+            listQuests: listQuests
+        })
 
     }
 
@@ -124,10 +114,9 @@ class App extends React.Component {
                       changeItemHandler={this.changeItemHandler}
                       checkedItemHandler={this.checkedItemHandler}
                       changeItemState={this.changeItemState}
+                      infoEmpty={this.state.listQuests.length}
                 />
 
-                {this.emptyList()}
-                <p>{this.state.emptyList}</p>
             </div>
         );
     }
