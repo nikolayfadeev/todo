@@ -12,6 +12,7 @@ export default function TodoList(props) {
                         return  <TodoItem
                             nameQuest={item.nameQuest}
                             id={item.id}
+                            key={item.id}
                             class={item.class}
                             removeItemHendler={props.removeItemHendler}
                             changeItemHandler={props.changeItemHandler}

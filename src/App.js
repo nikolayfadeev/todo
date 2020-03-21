@@ -20,7 +20,7 @@ class App extends React.Component {
 
     changeItemState = (changeItem) => {
         this.setState({
-            changeItem: changeItem
+            changeItem: changeItem.target.value
         })
     }
 
@@ -75,27 +75,33 @@ class App extends React.Component {
 
     changeItemHandler = (changeItem) => {
         let listQuests = this.state.listQuests; // стейт со списком
-
-
         const changeItemDate = this.state.changeItem // стейт того, на что нужно заменить nameQuest нужного объекта
         let arr = listQuests;
 
-        for (let i=0; listQuests.length <= i; i++) {
-            if (listQuests.id = changeItem) {
-                this.istQuests.nameQuest = changeItemDate
-            }
-        }
+        // for (let i=0; listQuests.length <= i; i++) {
+        //     if (listQuests[changeItem].id === changeItem) {
+        //         this.listQuests[changeItem].nameQuest = changeItemDate
+        //     }
+        // }
+
+        arr = listQuests.map((item) => {
+           if(item.id === changeItem) {
+                   item.nameQuest = changeItemDate
+           }
+       })
+
         this.setState({
-            listQuests: listQuests
+            listQuests: arr
         })
 
+       console.log(this.state.listQuests)
     }
 
     checkedItemHandler = (checkedItem) => {
         const listQuests = this.state.listQuests
 
         listQuests.map(item => {
-            return item.id == checkedItem?item.class = "checked-item" : "item"
+            return item.id === checkedItem?item.class = "checked-item" : "item"
         })
 
         this.setState({
