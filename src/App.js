@@ -78,21 +78,16 @@ class App extends React.Component {
         const changeItemDate = this.state.changeItem // стейт того, на что нужно заменить nameQuest нужного объекта
         let arr = listQuests;
 
-        // for (let i=0; listQuests.length <= i; i++) {
-        //     if (listQuests[changeItem].id === changeItem) {
-        //         this.listQuests[changeItem].nameQuest = changeItemDate
-        //     }
-        // }
-
         arr = listQuests.map((item) => {
            if(item.id === changeItem) {
                    item.nameQuest = changeItemDate
+               this.setState({
+                   listQuests: arr
+               })
            }
        })
 
-        this.setState({
-            listQuests: arr
-        })
+
 
        console.log(this.state.listQuests)
     }
